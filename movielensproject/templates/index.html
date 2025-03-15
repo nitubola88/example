@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendation System</title>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <form action="/recommend" method="POST">
+        <label for="user_id">Enter User ID:</label>
+        <input type="number" id="user_id" name="user_id" required>
+        <br><br>
+
+        <label for="movie_id">Select a Movie:</label>
+        <select id="movie_id" name="movie_id" required>
+            {% for index, row in movies_df.iterrows() %}
+                <option value="{{ row['movieId'] }}">{{ row['title'] }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <button type="submit">Get Recommendations</button>
+    </form>
+</body>
+</html>
